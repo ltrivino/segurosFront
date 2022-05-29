@@ -1,0 +1,35 @@
+<h3>Datos usuarios</h3>
+<mat-label>Nombre: {{nombre}}</mat-label> <br>
+<mat-label>Apellido: {{apellido}}</mat-label> <br>
+<mat-label>Cedula: {{cedula}}</mat-label> <br>
+
+<div class="row">
+    <div class="col-sm-6">
+        <label>Seguros disponibles:</label>
+        <mat-form-field class="opciones-combobox" appearance="outline">
+            <mat-select>
+                <mat-option *ngFor="let item of seguros" class="contenido-opciones" value={{item.id}}
+                    (click)="GetIngredient(item)">{{item.nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row separacion-fila">
+    <div class="col-sm-12" style="margin-bottom: 40px;">
+        <label>Seguros seleccionados: </label>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip *ngFor="let seguro of seguroList" [selectable]="selectable" [removable]="removable"
+                (removed)="remove(seguro)">
+                {{seguro.nombre}}
+                <button matChipRemove *ngIf="removable">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+
+</div>
+
+<button (click)="guardar()">Guardar</button>

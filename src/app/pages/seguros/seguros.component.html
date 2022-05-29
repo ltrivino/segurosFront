@@ -1,0 +1,112 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-card-title class="titulo">Crear Seguro</mat-card-title>
+            <div class="row contenedor-row">
+                <div class="col-sm-12">
+
+                    <label class="etiqueta"> Nombre </label>
+                    <input type="text" [(ngModel)]="nombre" autocapitalize="sentences" formControlName="nombre"
+                        class="form-control " name="nombre">
+
+
+                    <div class="col-sm-12">
+
+                        <label class="etiqueta">Prima </label>
+                        <input type="text" [(ngModel)]="prima" autocapitalize="sentences" formControlName="prima"
+                            class="form-control " name="prima">
+
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label class="etiqueta">Suma Asegurada</label>
+                        <input type="text" [(ngModel)]="suma_asegurada" autocapitalize="sentences"
+                            formControlName="suma_asegurada" class="form-control " name="suma_asegurada">
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor-botones">
+
+                <!--  <button *ngIf="hide2" [ngClass]="{'button': true, 'is-success': true, 'is-large': true}"
+                    class="boton-Opciones button-editar" mat-flat-button type="submit" (click)="HabilitarInput()"
+                    color="primary">
+                    Verificar
+                </button> [disabled]="!form.valid" -->
+                <button class="boton-Opciones button-guardar" mat-flat-button (click)=GuardarDatos() type="submit"
+                    color="primary">
+                    Guardar
+                </button>
+
+            </div>
+        </form>
+
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+
+
+    <mat-form-field class="buscar" appearance="outline">
+        <mat-label>Buscar</mat-label>
+
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por asegurados" #input>
+    </mat-form-field>
+
+
+
+    <div class="example-container">
+
+        <div class="example-table-container">
+
+
+            <table mat-table [dataSource]="dataSource" matSort class="example-table">
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Id </th>
+                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Nombre </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="prima">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Prima </th>
+                    <td mat-cell *matCellDef="let row"> {{row.prima}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="suma_asegurada">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Suma Total </th>
+                    <td mat-cell *matCellDef="let row"> {{row.suma_asegurada}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Acción </th>
+                    <td mat-cell *matCellDef="let row; let i = index">
+                        <mat-icon class="cursor" title="Editar Ingrediente" style="color: rgb(196, 184, 24);"
+                            [routerLink]="['/seguro', row.id]">edit</mat-icon>
+                        <mat-icon class="cursor" (click)="ConfirmarDelete(row.id)" style="color: crimson;">
+                            delete_forever
+                        </mat-icon>
+
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+
+</mat-card>

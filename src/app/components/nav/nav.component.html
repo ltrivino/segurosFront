@@ -1,0 +1,48 @@
+<div class="show-mobile">
+    <div>
+        <button (click)="toggleMenu()">
+            <img src="./assets/svg/icon_menu.svg" alt="menu">
+        </button>
+        <a href="">
+            <h1>PruebaLogo</h1>
+        </a>
+
+        <ul>
+            <li><a routerLinkActive="active" routerLink="asegurados">Asegurados</a></li>
+        </ul>
+        <ul>
+            <li><a routerLinkActive="active" routerLink="seguros">Seguros</a></li>
+        </ul>
+        <ul>
+            <li><a routerLinkActive="active" routerLink="buscar">Buscar</a></li>
+        </ul>
+
+    </div>
+    <div class="side-menu" [class.active]="activeMenu">
+        <button (click)="toggleMenu()">Close</button>
+    </div>
+</div>
+<div class="hide-mobile">
+    <div>
+        <nav>
+            <a class="logo" href="">
+                <h1>PruebaLogo</h1>
+            </a>
+            <ul>
+                <li><a routerLinkActive="active" routerLink="asegurados">Asegurados</a></li>
+            </ul>
+            <ul>
+                <li><a routerLinkActive="active" routerLink="seguros">Seguros</a></li>
+            </ul>
+            <ul>
+                <li><a routerLinkActive="active" routerLink="buscar">Buscar</a></li>
+            </ul>
+        </nav>
+        <div class="info">
+            <div class="account">
+                <a routerLink="/profile">{{ profile }} </a>
+                <button (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>

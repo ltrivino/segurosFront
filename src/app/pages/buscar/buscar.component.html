@@ -1,0 +1,88 @@
+<mat-card>
+    <mat-card-content>
+        <mat-card-title class="titulo">Buscar asegurados por seguro</mat-card-title>
+        <div class="row contenedor-row">
+            <div class="col-sm-12">
+
+                <label>Seguros:</label>
+                <mat-form-field appearance="outline" class="imput_opcion">
+                    <mat-select>
+                        <mat-option *ngFor="let item of seguros" class="contenido-opciones" value={{item.id}}
+                            (click)="GetAseguradosbySeguro(item.id)">{{item.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+
+
+    <mat-form-field class="buscar" appearance="outline">
+        <mat-label>Buscar</mat-label>
+
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por asegurados" #input>
+    </mat-form-field>
+
+
+
+    <div class="example-container">
+
+        <div class="example-table-container">
+
+
+            <table mat-table [dataSource]="dataSource" matSort class="example-table">
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Id </th>
+                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="aseguradosId">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Asegurado </th>
+                    <td mat-cell *matCellDef="let row"> {{row.aseguradosId  | nombreAsegurado | async }} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="segurosId">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Seguro </th>
+                    <td mat-cell *matCellDef="let row"> {{row.segurosId | nombreSeguro | async}} </td>
+                </ng-container>
+
+
+                <!-- <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Estado </th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-slide-toggle [(ngModel)]="row.status" (toggleChange)="ConfirmarCambioStatus(row)">
+                        </mat-slide-toggle>
+                    </td>
+                </ng-container>
+ -->
+
+                <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Acción </th>
+                    <td mat-cell *matCellDef="let row; let i = index">
+                        <mat-icon class="cursor" title="Editar Ingrediente" style="color: rgb(196, 184, 24);"
+                            [routerLink]="['/asegurado', row.id]">edit</mat-icon>
+
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+
+</mat-card>

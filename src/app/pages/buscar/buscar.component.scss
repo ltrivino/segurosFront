@@ -1,0 +1,174 @@
+example-container {
+    position: relative;
+}
+
+.example-table-container {
+    position  : relative;
+    min-height: 200px;
+    max-height: 400px;
+    overflow  : auto;
+}
+
+mat-card {
+    max-width : 90%;
+    margin    : 0 auto;
+    border-top: 4px solid #ff9800;
+}
+
+table {
+    width : 100%;
+    height: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width    : 100%;
+}
+
+.titulo {
+    margin-top    : 15px;
+    margin-bottom : 4%;
+    font-size     : 18px;
+    font-family   : 'Helvetica-Bold';
+    font-weight   : 900;
+    letter-spacing: 0.11rem;
+    text-align    : center;
+    color         : #EE7112;
+}
+
+.contenedor-row {
+    margin-left : 25%;
+    margin-right: 25%;
+
+}
+
+.contenedor-botones {
+    text-align   : center;
+    padding-top  : 40px;
+    margin-top   : 60px;
+    margin-bottom: 30px;
+}
+
+/*---------------------------------------------Botones y Animacion Botones-------------------------------------------------------*/
+.boton-Opciones {
+    margin-bottom   : 7px;
+    max-width       : 200px;
+    margin-right    : 10px;
+    background-color: #121629;
+    color           : white;
+    height          : 40px;
+    width           : 130px;
+}
+
+.boton-Opciones:before {
+    content         : '';
+    position        : absolute;
+    bottom          : 0;
+    left            : 0;
+    width           : 100%;
+    height          : 3px;
+    background      : linear-gradient(to right, #f0c43e, #f3981f, #ed7111);
+    z-index         : 1;
+    transform       : scaleX(0);
+    transform-origin: left;
+    transition      : transform 0.5s ease-in-out;
+    background      : linear-gradient(to right, #f0c43e, #f3981f, #ed7111);
+}
+
+.boton-Opciones:hover::before {
+    transform: scaleX(1);
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+.form-control {
+    background-color: transparent;
+    padding         : 15;
+    height          : 50px;
+    z-index         : 2;
+    font-size       : 15px;
+    margin-bottom   : 22px;
+}
+
+.buscar {
+    margin-left: 5%;
+    width      : 90% !important;
+    margin-top : 30px !important;
+}
+
+.example-form mat-slide-toggle {
+    margin : 8px 0;
+    display: block;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width    : 100%;
+}
+
+/* Column Widths */
+.mat-column-number,
+.mat-column-state {
+    max-width: 64px;
+}
+
+.mat-column-created {
+    max-width: 124px;
+}
+
+
+/*contenedor de la tabla */
+.example-table-container {
+    text-align: center !important;
+}
+
+.title-tabla {
+    color         : #EE7112;
+    letter-spacing: 0.08rem;
+    font-weight   : 500;
+    text-align    : center !important
+}
+
+mat-icon {
+    padding-left: 5px;
+}
+
+/* Botones de accion */
+.cursor {
+    margin-left: 10px;
+}
+
+/*Media Query*/
+@media (max-width: 860px) {
+    tr th {
+        padding-left : 40px;
+        padding-right: 70px;
+    }
+
+    tbody td {
+        text-align: center;
+    }
+}
+
+@media (max-width: 460px) {
+    .mat-card {
+        max-width: 92%;
+        width    : 92%;
+    }
+}
+
+@media (max-width: 411px) {
+    .contenedor-row {
+        margin-left : 0%;
+        margin-right: 0%;
+    }
+
+    .file {
+        font-size: 11px;
+    }
+
+    .titulo {
+        font-size    : 14px;
+        margin-bottom: 10%;
+    }
+
+}
